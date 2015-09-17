@@ -6,60 +6,60 @@ import java.nio.file.*;
 import javax.swing.event.*;
 
 /**
- * 
+ *
  * @author NikichXP
  * @version 1.1.1d
  * @since 6 may 2014
- * 
+ *
  */
 
 /*
- Изменения
+ РР·РјРµРЅРµРЅРёСЏ
  5/05/14
  v1.0.1:	
-  		*Демонстрация в виде курсовой работы.
+  		*Р”РµРјРѕРЅСЃС‚СЂР°С†РёСЏ РІ РІРёРґРµ РєСѓСЂСЃРѕРІРѕР№ СЂР°Р±РѕС‚С‹.
   		
  6/05
  v1.0.2:	
- 		*Модули обработки событий вынесены в отдельные методы
- 		*Программа запускается в fullscreen-mode
- 		*Подгрузка конфигуратора
- 		*Реорганизация кода, количество строк уменьшено на 20%
- 		*Теперь кнопки реагируют на выбранный файл
+ 		*РњРѕРґСѓР»Рё РѕР±СЂР°Р±РѕС‚РєРё СЃРѕР±С‹С‚РёР№ РІС‹РЅРµСЃРµРЅС‹ РІ РѕС‚РґРµР»СЊРЅС‹Рµ РјРµС‚РѕРґС‹
+ 		*РџСЂРѕРіСЂР°РјРјР° Р·Р°РїСѓСЃРєР°РµС‚СЃСЏ РІ fullscreen-mode
+ 		*РџРѕРґРіСЂСѓР·РєР° РєРѕРЅС„РёРіСѓСЂР°С‚РѕСЂР°
+ 		*Р РµРѕСЂРіР°РЅРёР·Р°С†РёСЏ РєРѕРґР°, РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕРє СѓРјРµРЅСЊС€РµРЅРѕ РЅР° 20%
+ 		*РўРµРїРµСЂСЊ РєРЅРѕРїРєРё СЂРµР°РіРёСЂСѓСЋС‚ РЅР° РІС‹Р±СЂР°РЅРЅС‹Р№ С„Р°Р№Р»
  
  9/05
  v1.0.3:	
- 	*Исправлен баг, из-за которого отображался размер папки на диске вместо <DIR>
+ 	*РСЃРїСЂР°РІР»РµРЅ Р±Р°Рі, РёР·-Р·Р° РєРѕС‚РѕСЂРѕРіРѕ РѕС‚РѕР±СЂР°Р¶Р°Р»СЃСЏ СЂР°Р·РјРµСЂ РїР°РїРєРё РЅР° РґРёСЃРєРµ РІРјРµСЃС‚Рѕ <DIR>
  
  12/5 
  v1.1.0:	
- 		*Теперь в строку адреса можно "вбивать" адрес.
-  		*Удалена кнопка "Открыть адрес".
-  		*Код стал более читабелен.
-  		*Добавлены кнопки дисков для быстрого доступа
+ 		*РўРµРїРµСЂСЊ РІ СЃС‚СЂРѕРєСѓ Р°РґСЂРµСЃР° РјРѕР¶РЅРѕ "РІР±РёРІР°С‚СЊ" Р°РґСЂРµСЃ.
+  		*РЈРґР°Р»РµРЅР° РєРЅРѕРїРєР° "РћС‚РєСЂС‹С‚СЊ Р°РґСЂРµСЃ".
+  		*РљРѕРґ СЃС‚Р°Р» Р±РѕР»РµРµ С‡РёС‚Р°Р±РµР»РµРЅ.
+  		*Р”РѕР±Р°РІР»РµРЅС‹ РєРЅРѕРїРєРё РґРёСЃРєРѕРІ РґР»СЏ Р±С‹СЃС‚СЂРѕРіРѕ РґРѕСЃС‚СѓРїР°
 
  13/5
  v1.1.1:	
-  		*Появился пакет локализации, настраиваемый
-  		*При наведении на диск отображается свободное место и общий объём диска
-  		*Возвращена кнопка панели "Открыть адрес"
-  		*Добавлена кнопка меню "Открыть адрес"
-  		*Удалена кнопка панели "Открыть адрес"
+  		*РџРѕСЏРІРёР»СЃСЏ РїР°РєРµС‚ Р»РѕРєР°Р»РёР·Р°С†РёРё, РЅР°СЃС‚СЂР°РёРІР°РµРјС‹Р№
+  		*РџСЂРё РЅР°РІРµРґРµРЅРёРё РЅР° РґРёСЃРє РѕС‚РѕР±СЂР°Р¶Р°РµС‚СЃСЏ СЃРІРѕР±РѕРґРЅРѕРµ РјРµСЃС‚Рѕ Рё РѕР±С‰РёР№ РѕР±СЉС‘Рј РґРёСЃРєР°
+  		*Р’РѕР·РІСЂР°С‰РµРЅР° РєРЅРѕРїРєР° РїР°РЅРµР»Рё "РћС‚РєСЂС‹С‚СЊ Р°РґСЂРµСЃ"
+  		*Р”РѕР±Р°РІР»РµРЅР° РєРЅРѕРїРєР° РјРµРЅСЋ "РћС‚РєСЂС‹С‚СЊ Р°РґСЂРµСЃ"
+  		*РЈРґР°Р»РµРЅР° РєРЅРѕРїРєР° РїР°РЅРµР»Рё "РћС‚РєСЂС‹С‚СЊ Р°РґСЂРµСЃ"
  14/5
  v1.1.1b-d:
- 		*Добавлено окно опций
- 		*Изменено окно информации
- 		*Исправлена ошибка из-за которой кнопка "Назад" становилась неактивной после открытия одной папки на диске.
- 		*Исправлена ошибка, из-за которой некоторые файлы имели размер в 0 террабайт
- 		*Увеличен размер кнопок дисков
+ 		*Р”РѕР±Р°РІР»РµРЅРѕ РѕРєРЅРѕ РѕРїС†РёР№
+ 		*РР·РјРµРЅРµРЅРѕ РѕРєРЅРѕ РёРЅС„РѕСЂРјР°С†РёРё
+ 		*РСЃРїСЂР°РІР»РµРЅР° РѕС€РёР±РєР° РёР·-Р·Р° РєРѕС‚РѕСЂРѕР№ РєРЅРѕРїРєР° "РќР°Р·Р°Рґ" СЃС‚Р°РЅРѕРІРёР»Р°СЃСЊ РЅРµР°РєС‚РёРІРЅРѕР№ РїРѕСЃР»Рµ РѕС‚РєСЂС‹С‚РёСЏ РѕРґРЅРѕР№ РїР°РїРєРё РЅР° РґРёСЃРєРµ.
+ 		*РСЃРїСЂР°РІР»РµРЅР° РѕС€РёР±РєР°, РёР·-Р·Р° РєРѕС‚РѕСЂРѕР№ РЅРµРєРѕС‚РѕСЂС‹Рµ С„Р°Р№Р»С‹ РёРјРµР»Рё СЂР°Р·РјРµСЂ РІ 0 С‚РµСЂСЂР°Р±Р°Р№С‚
+ 		*РЈРІРµР»РёС‡РµРЅ СЂР°Р·РјРµСЂ РєРЅРѕРїРѕРє РґРёСЃРєРѕРІ
  16/5
  v1.2.0
- 		*Реализован дабл-клик
- 		*Теперь все файлы с расширением *.exe запускаются как Win32-приложения
- 		*Все файлы с любым расширением запускаются как обычные файлы, вызывая Win32API для запуска файла
+ 		*Р РµР°Р»РёР·РѕРІР°РЅ РґР°Р±Р»-РєР»РёРє
+ 		*РўРµРїРµСЂСЊ РІСЃРµ С„Р°Р№Р»С‹ СЃ СЂР°СЃС€РёСЂРµРЅРёРµРј *.exe Р·Р°РїСѓСЃРєР°СЋС‚СЃСЏ РєР°Рє Win32-РїСЂРёР»РѕР¶РµРЅРёСЏ
+ 		*Р’СЃРµ С„Р°Р№Р»С‹ СЃ Р»СЋР±С‹Рј СЂР°СЃС€РёСЂРµРЅРёРµРј Р·Р°РїСѓСЃРєР°СЋС‚СЃСЏ РєР°Рє РѕР±С‹С‡РЅС‹Рµ С„Р°Р№Р»С‹, РІС‹Р·С‹РІР°СЏ Win32API РґР»СЏ Р·Р°РїСѓСЃРєР° С„Р°Р№Р»Р°
  		
- 	TODO	2 окна (спросить дизайн у влада)
- 	TODO 	Пункт "вверх" на 1-й позиции в листе
+ 	TODO	2 РѕРєРЅР°
+ 	TODO 	РџСѓРЅРєС‚ "РІРІРµСЂС…" РЅР° 1-Р№ РїРѕР·РёС†РёРё РІ Р»РёСЃС‚Рµ
  	 
 */
 
@@ -67,7 +67,7 @@ public class OldGUI extends JFrame {
 	private static final long serialVersionUID = 0x4ffd62a;
 	public String status = new String ("iSyncOS XFile Manager");
 	public String version = new String (" ver1.2.0.2");
-	public JTable table1; 
+	public JTable table1;
 	public static FileList tableModel;
 	public File loc1;
 	public Path copyPath;
@@ -78,32 +78,32 @@ public class OldGUI extends JFrame {
 	public JPanel mainFilePanel;
 	public JPanel buttonPanel;
 	public Locale l;
-	
-	
-	
+
+
+
 	public OldGUI () {
 		this.setTitle(status + version);
 		this.init();
 	}
-	
+
 	protected void init() {
 		@SuppressWarnings("unused")
-		Configurator c = Configurator.getConfigurator();		
+		Configurator c = Configurator.getConfigurator();
 //		c.load("D:/config.pce");		
 //		this.setUndecorated(true); 
 //		if (c.getProperty("fullscreen") == "true") {
-			this.setExtendedState(Frame.MAXIMIZED_BOTH); 
+		this.setExtendedState(Frame.MAXIMIZED_BOTH);
 //		} else {
-//			this.setSize (1080, 984);   //Это для случая оконного режима.
+//			this.setSize (1080, 984);   //Р­С‚Рѕ РґР»СЏ СЃР»СѓС‡Р°СЏ РѕРєРѕРЅРЅРѕРіРѕ СЂРµР¶РёРјР°.
 //		}
 		l = new Locale ();
 		l.setLocale("ruRU");
 		this.pathPanel = new JPanel ();
 		this.pathPanel.setLayout(new BoxLayout (pathPanel, BoxLayout.X_AXIS));
 		addRootButtons();
-		
+
 		this.setJMenuBar(getJMenuBar());
-		
+
 		this.lPath = new JLabel ();
 		this.lPath.setText("C:");
 		this.jtf = new JTextField ();
@@ -112,19 +112,19 @@ public class OldGUI extends JFrame {
 		this.pathPanel.add(this.jtf);
 		OldGUI.tableModel = new FileList ();
 		this.table1 = new JTable(tableModel);
-		
+
 		this.table1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-				
+
 		this.mainFilePanel = new JPanel ();
-		this.mainFilePanel.setBorder(BorderFactory.createTitledBorder("Файлы"));
+		this.mainFilePanel.setBorder(BorderFactory.createTitledBorder("Р¤Р°Р№Р»С‹"));
 		this.mainFilePanel.setLayout(new BorderLayout());
 		this.mainFilePanel.add(new JScrollPane(table1), BorderLayout.CENTER);
-		
-		
-		
+
+
+
 		this.buttonPanel = getButtonPanel();
 		addListeners();
-		
+
 		this.getContentPane().setLayout(new BorderLayout());
 		this.getContentPane().add(this.pathPanel, BorderLayout.NORTH);
 		this.getContentPane().add(this.mainFilePanel, BorderLayout.CENTER);
@@ -132,22 +132,22 @@ public class OldGUI extends JFrame {
 		this.lPath.setText("C:\\");
 		File file = new File(this.lPath.getText());
 		String newFiles[] = file.list();
-        for (int i =0; i <newFiles.length; i++) {
-        	OldGUI.tableModel.addFile(new File(this.lPath.getText()+newFiles[i]));
-        }
+		for (int i =0; i <newFiles.length; i++) {
+			OldGUI.tableModel.addFile(new File(this.lPath.getText()+newFiles[i]));
+		}
 	}
 
 	private JPanel getButtonPanel() {
 		JPanel ret = new JPanel ();
-		
+
 //		this.open = new JButton ("open temp..");
 		this.fwd = new JButton (l.fwd());
-		this.back = new JButton ("Назад");
-		this.quit = new JButton ("Выйти");
-		this.delete = new JButton ("Удалить");
-		this.copy = new JButton ("Копировать");
-		this.paste = new JButton ("Вставить");
-		
+		this.back = new JButton ("РќР°Р·Р°Рґ");
+		this.quit = new JButton ("Р’С‹Р№С‚Рё");
+		this.delete = new JButton ("РЈРґР°Р»РёС‚СЊ");
+		this.copy = new JButton ("РљРѕРїРёСЂРѕРІР°С‚СЊ");
+		this.paste = new JButton ("Р’СЃС‚Р°РІРёС‚СЊ");
+
 //		ret.add(this.open);
 		ret.add(this.fwd);
 		ret.add(this.back);
@@ -155,19 +155,19 @@ public class OldGUI extends JFrame {
 		ret.add(this.delete);
 		ret.add(this.copy);
 		ret.add(this.paste);
-		
+
 		return ret;
 	}
 
 	private void infoView() {
 		JPanel infoPanel = new JPanel ();
 		final JFrame infoFrame = new JFrame ();
-		
-		infoPanel.add (new JLabel ("Автор: NikichXP aka iSyncOS   Заказчик: Абу-Усбах Алексей Нидальевич"));
+
+		infoPanel.add (new JLabel ("РђРІС‚РѕСЂ: NikichXP aka iSyncOS   Р—Р°РєР°Р·С‡РёРє: РђР±Сѓ-РЈСЃР±Р°С… РђР»РµРєСЃРµР№ РќРёРґР°Р»СЊРµРІРёС‡"));
 		infoPanel.add (new JLabel (""));
-		infoPanel.add (new JLabel ("(с) Май 2014"));
+		infoPanel.add (new JLabel ("(СЃ) РњР°Р№ 2014"));
 		JButton ok = new JButton ("ok");
-		ok.addActionListener(new ActionListener() {			
+		ok.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent arg0) {
 				infoFrame.setVisible(false);
 			}
@@ -192,22 +192,22 @@ public class OldGUI extends JFrame {
 					openButtonEvent (arg0.getActionCommand().charAt(2) + ":\\");
 				}
 			});
-			diskBtn[i].setToolTipText(l.free() + disks[i].getFreeSpace()/1073741824 + "GB/" + 
+			diskBtn[i].setToolTipText(l.free() + disks[i].getFreeSpace()/1073741824 + "GB/" +
 					+ disks[i].getTotalSpace()/1073741824 + "GB");
 			diskBtn[i].setAlignmentX(LEFT_ALIGNMENT);
-			
+
 		}
 	}
-	//МНОГО СЛУШАТЕЛЕЙ
+	//РњРќРћР“Рћ РЎР›РЈРЁРђРўР•Р›Р•Р™
 	private void addListeners() {
-		this.table1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {		
+		this.table1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			@Override	public void valueChanged(ListSelectionEvent arg0) {	tableSelectionChanged(arg0); }
 		});
 		this.table1.addMouseListener(new MouseListener() {
-			@Override public void mouseReleased(MouseEvent arg0) { }			
-			@Override public void mousePressed(MouseEvent arg0) { }			
-			@Override public void mouseExited(MouseEvent arg0) { }			
-			@Override public void mouseEntered(MouseEvent arg0) { }			
+			@Override public void mouseReleased(MouseEvent arg0) { }
+			@Override public void mousePressed(MouseEvent arg0) { }
+			@Override public void mouseExited(MouseEvent arg0) { }
+			@Override public void mouseEntered(MouseEvent arg0) { }
 			@Override public void mouseClicked(MouseEvent arg0) { tableClickedEvent(arg0); }});
 		this.addWindowListener(new WindowListener() {
 			@Override	public void windowClosing(WindowEvent arg0) { System.exit(0); }
@@ -223,17 +223,17 @@ public class OldGUI extends JFrame {
 			@Override public void keyReleased(KeyEvent arg0) { }
 			@Override public void keyPressed(KeyEvent arg0) { keyBoardEvent (arg0); }
 		});
-		this.lPath.setToolTipText("Введите путь сюда");
+		this.lPath.setToolTipText("Р’РІРµРґРёС‚Рµ РїСѓС‚СЊ СЃСЋРґР°");
 		this.lPath.addMouseListener(new MouseListener() {
-			@Override public void mouseReleased(MouseEvent arg0) { }			
-			@Override public void mousePressed(MouseEvent arg0) { }			
-			@Override public void mouseExited(MouseEvent arg0) { }			
-			@Override public void mouseEntered(MouseEvent arg0) { }			
+			@Override public void mouseReleased(MouseEvent arg0) { }
+			@Override public void mousePressed(MouseEvent arg0) { }
+			@Override public void mouseExited(MouseEvent arg0) { }
+			@Override public void mouseEntered(MouseEvent arg0) { }
 			@Override public void mouseClicked(MouseEvent arg0) {
 				lPath.setVisible(false);
 				jtf.setText(lPath.getText());
 				jtf.setVisible(true);
-		}});
+			}});
 		this.jtf.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -242,7 +242,7 @@ public class OldGUI extends JFrame {
 				lPath.setText(jtf.getText());
 				lPath.setVisible (true);
 				openButtonEvent(arg0.getActionCommand());
-		}});
+			}});
 //		this.open.addActionListener(new ActionListener() {
 //			@Override public void actionPerformed(ActionEvent arg0) { openButtonEvent (); }});
 		this.fwd.addActionListener(new ActionListener() {
@@ -265,7 +265,7 @@ public class OldGUI extends JFrame {
 			clickTime = arg0.getWhen();
 			doubleClickPossible = true;
 		}
-		
+
 	}
 	protected void pathChangedEvent(String path) {
 		lPath.setText(path);
@@ -290,7 +290,7 @@ public class OldGUI extends JFrame {
 		}
 	}
 	protected void openButtonEvent () {
-		lPath.setText(JOptionPane.showInputDialog("Введите путь:"));
+		lPath.setText(JOptionPane.showInputDialog("Р’РІРµРґРёС‚Рµ РїСѓС‚СЊ:"));
 		tableModel.clearTable();
 		String path = lPath.getText();
 		path+=" ";
@@ -393,7 +393,7 @@ public class OldGUI extends JFrame {
 	}
 	protected void copyButtonEvent () {
 		if (table1.getSelectedRow() == -1) {
-			JOptionPane.showMessageDialog(null, "Файл не выбран");
+			JOptionPane.showMessageDialog(null, "Р¤Р°Р№Р» РЅРµ РІС‹Р±СЂР°РЅ");
 		} else {
 			copyPath = tableModel.getFile(table1.getSelectedRow()).toPath();
 		}
@@ -424,56 +424,56 @@ public class OldGUI extends JFrame {
 			backButtonEvent();
 		} else {
 			if (table1.getSelectedRow() == -1) {
-				JOptionPane.showMessageDialog(null, "Файл не выбран");
+				JOptionPane.showMessageDialog(null, "Р¤Р°Р№Р» РЅРµ РІС‹Р±СЂР°РЅ");
 			} else {
 				switch (arg0.getKeyCode()) {
-				case KeyEvent.VK_ENTER:
-					fwdButtonEvent();
-					break;
-				case KeyEvent.VK_C:
-		    		copyPath = tableModel.getFile(table1.getSelectedRow()).toPath();
-					break;
-				case KeyEvent.VK_V:
-					pasteButtonEvent();
-		    		break;
-				case KeyEvent.VK_DELETE:
-		    		deleteProc();
-					break;
+					case KeyEvent.VK_ENTER:
+						fwdButtonEvent();
+						break;
+					case KeyEvent.VK_C:
+						copyPath = tableModel.getFile(table1.getSelectedRow()).toPath();
+						break;
+					case KeyEvent.VK_V:
+						pasteButtonEvent();
+						break;
+					case KeyEvent.VK_DELETE:
+						deleteProc();
+						break;
 				}
 			}
 		}
-	}	
+	}
 	private void deleteProc () {
-		int q = JOptionPane.showConfirmDialog(null, "Удалить файл?");
+		int q = JOptionPane.showConfirmDialog(null, "РЈРґР°Р»РёС‚СЊ С„Р°Р№Р»?");
 		if (q == 0) {
-		File loc = tableModel.getFile(table1.getSelectedRow());
-		if (loc.isDirectory()) {
-			deleteDir(loc);
-		} else {
-			if (loc.delete()) {
-    			JOptionPane.showMessageDialog(null, "Файл успешно удалён.");
-    			tableModel.clearFile(table1.getSelectedRow());
-    		} else {
-    			JOptionPane.showMessageDialog(null, "Удалить файл не удалось.");
-    		}
-		}
+			File loc = tableModel.getFile(table1.getSelectedRow());
+			if (loc.isDirectory()) {
+				deleteDir(loc);
+			} else {
+				if (loc.delete()) {
+					JOptionPane.showMessageDialog(null, "Р¤Р°Р№Р» СѓСЃРїРµС€РЅРѕ СѓРґР°Р»С‘РЅ.");
+					tableModel.clearFile(table1.getSelectedRow());
+				} else {
+					JOptionPane.showMessageDialog(null, "РЈРґР°Р»РёС‚СЊ С„Р°Р№Р» РЅРµ СѓРґР°Р»РѕСЃСЊ.");
+				}
+			}
 		}
 	}
 	@SuppressWarnings("unused")
 	private void deleteProc (File loc) {
-		int q = JOptionPane.showConfirmDialog(null, "Удалить файл?");
+		int q = JOptionPane.showConfirmDialog(null, "РЈРґР°Р»РёС‚СЊ С„Р°Р№Р»?");
 		if (q == 0) {
-		loc = tableModel.getFile(table1.getSelectedRow());
-		if (loc.isDirectory()) {
-			deleteDir(loc);
-		} else {
-			if (loc.delete()) {
-    			JOptionPane.showMessageDialog(null, "Файл успешно удалён.");
-    			tableModel.clearFile(table1.getSelectedRow());
-    		} else {
-    			JOptionPane.showMessageDialog(null, "Удалить файл не удалось.");
-    		}
-		}
+			loc = tableModel.getFile(table1.getSelectedRow());
+			if (loc.isDirectory()) {
+				deleteDir(loc);
+			} else {
+				if (loc.delete()) {
+					JOptionPane.showMessageDialog(null, "Р¤Р°Р№Р» СѓСЃРїРµС€РЅРѕ СѓРґР°Р»С‘РЅ.");
+					tableModel.clearFile(table1.getSelectedRow());
+				} else {
+					JOptionPane.showMessageDialog(null, "РЈРґР°Р»РёС‚СЊ С„Р°Р№Р» РЅРµ СѓРґР°Р»РѕСЃСЊ.");
+				}
+			}
 		}
 	}
 	protected void deleteDir(File f) {
@@ -490,7 +490,7 @@ public class OldGUI extends JFrame {
 				try {
 					Files.delete(f2.toPath());
 				} catch (IOException e) {
-					JOptionPane.showMessageDialog(null, "Не удалось удалить файл");
+					JOptionPane.showMessageDialog(null, "РќРµ СѓРґР°Р»РѕСЃСЊ СѓРґР°Р»РёС‚СЊ С„Р°Р№Р»");
 				}
 			} else {
 				del(f2);
@@ -507,7 +507,7 @@ public class OldGUI extends JFrame {
 			e.printStackTrace();
 		}
 		tableModel.clearFile(table1.getSelectedRow());
-		JOptionPane.showMessageDialog(null, "Файл успешно удалён");
+		JOptionPane.showMessageDialog(null, "Р¤Р°Р№Р» СѓСЃРїРµС€РЅРѕ СѓРґР°Р»С‘РЅ");
 	}
 	private void del(File f) {
 		String s[] = f.list();
@@ -518,7 +518,7 @@ public class OldGUI extends JFrame {
 				try {
 					Files.delete(f2.toPath());
 				} catch (IOException e) {
-					JOptionPane.showMessageDialog(null, "Не удалось удалить файл");
+					JOptionPane.showMessageDialog(null, "РќРµ СѓРґР°Р»РѕСЃСЊ СѓРґР°Р»РёС‚СЊ С„Р°Р№Р»");
 				}
 			} else {
 				del(f2);
@@ -530,21 +530,21 @@ public class OldGUI extends JFrame {
 			}
 		}
 	}
-	
-	
-	//Реализация дабл-клика
+
+
+	//Р РµР°Р»РёР·Р°С†РёСЏ РґР°Р±Р»-РєР»РёРєР°
 	protected long clickTime;
 	public boolean doubleClickPossible;
 	protected void tableSelectionChanged(ListSelectionEvent arg0) {
 		doubleClickPossible = false;
 	}
 	public JMenuBar getJMenuBar () {
-		JMenu fileMenu = new JMenu ("Файл");
-		JMenu helpMenu = new JMenu ("Помощь");
-		JMenuItem openLoc = new JMenuItem ("Открыть", KeyEvent.VK_O);
-		JMenuItem close = new JMenuItem ("Выход", KeyEvent.VK_Q);
-		JMenuItem help = new JMenuItem ("Об авторе", KeyEvent.VK_H);
-		JMenuItem options = new JMenuItem ("Настройки", KeyEvent.VK_C);
+		JMenu fileMenu = new JMenu ("Р¤Р°Р№Р»");
+		JMenu helpMenu = new JMenu ("РџРѕРјРѕС‰СЊ");
+		JMenuItem openLoc = new JMenuItem ("РћС‚РєСЂС‹С‚СЊ", KeyEvent.VK_O);
+		JMenuItem close = new JMenuItem ("Р’С‹С…РѕРґ", KeyEvent.VK_Q);
+		JMenuItem help = new JMenuItem ("РћР± Р°РІС‚РѕСЂРµ", KeyEvent.VK_H);
+		JMenuItem options = new JMenuItem ("РќР°СЃС‚СЂРѕР№РєРё", KeyEvent.VK_C);
 		fileMenu.add(openLoc);
 		fileMenu.addSeparator();
 		fileMenu.add(close);
@@ -552,7 +552,7 @@ public class OldGUI extends JFrame {
 			@Override public void actionPerformed(ActionEvent arg0) { openButtonEvent(); }});
 		close.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent arg0) { System.exit(0); }});
-		
+
 		helpMenu.add(help);
 		helpMenu.add(options);
 		help.addActionListener(new ActionListener() {
@@ -580,13 +580,13 @@ public class OldGUI extends JFrame {
 		menuBar.add(helpMenu);
 		return menuBar;
 	}
-	
+
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                OldGUI manager = new OldGUI();
-                manager.setVisible(true);
-            }
-        });
+			public void run() {
+				OldGUI manager = new OldGUI();
+				manager.setVisible(true);
+			}
+		});
 	}
 }

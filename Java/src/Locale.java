@@ -1,19 +1,17 @@
-import javax.swing.Icon;
-
 public class Locale {
 	private static String loc;
 	public Locale () {
 		
 	}
 	public void setLocale (String loc) {
-		this.loc = loc;
+		Locale.loc = loc;
 	}
 	
 	
 	public String free() {
 		switch (loc) {
 		case "ruRU":
-			return "Свободно: ";
+			return "CРІРѕР±РѕРґРЅРѕ: ";
 		default:
 			return "Free: ";
 		}
@@ -21,7 +19,7 @@ public class Locale {
 	public String fwd() {
 		switch (loc) {
 		case "ruRU":
-			return "Открыть";
+			return "Р’РїРµСЂРµРґ";
 		default:
 			return "Forward";
 		}
