@@ -1,9 +1,14 @@
 import java.nio.file.*;
 
+
+/**
+ * Main script for debug (now) and launch (future)
+ */
 public class Core {
 
     public static String tokenId = null;
     public final static int userId = 9867491;
+    public final static boolean DEBUG = true;
 
     public static void main (String [] args) {
         try {
@@ -12,8 +17,8 @@ public class Core {
             e.printStackTrace();
         }
 
-        UserAPI get = new UserAPI () ;
-        UserEntity u = new UserEntity(get.getFriends(userId));
+//        UserEntity u = new UserEntity(userId);
+        System.out.println(UserAPI.getUserInfo(userId));
 
     }
 }

@@ -4,19 +4,22 @@ import java.net.URL;
 import java.net.URLConnection;
 
 /**
- * This is simply get-request class
+ * This is simply cleanGet-request class
  */
 public class Get {
 
     public static String get (String url) {
-        String ret;
+        return cleanGet("https://api.vk.com/method/" + url + "&v=5.37&access_token=" + Core.tokenId);
+    }
+
+    private static String cleanGet(String url) {
+        String ret = "";
         try {
             URL u1 = new URL(url);
             URLConnection conn = u1.openConnection();
             InputStream inStream = conn.getInputStream();
             InputStreamReader in = new InputStreamReader(inStream);
             char[] buf = new char[10];
-            ret = new String();
             while (in.ready()) {
                 in.read(buf);
                 String tmp = new String (buf);
