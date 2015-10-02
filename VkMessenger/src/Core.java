@@ -13,7 +13,7 @@ public class Core {
         }
 
         UserAPI get = new UserAPI () ;
-        System.out.println(get.getUser(userId));
+        UserEntity u = new UserEntity(get.getFriends(userId));
 
     }
 }

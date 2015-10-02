@@ -4,12 +4,12 @@ import java.net.URL;
 import java.net.URLConnection;
 
 /**
- * Created by nikichxp on 01.10.15.
+ * This is simply get-request class
  */
 public class Get {
 
     public static String get (String url) {
-        String ret = null;
+        String ret;
         try {
             URL u1 = new URL(url);
             URLConnection conn = u1.openConnection();

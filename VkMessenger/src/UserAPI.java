@@ -7,4 +7,8 @@ public class UserAPI {
         return Get.get ("https://api.vk.com/method/users.get?user_id=" + id + "&v=5.37&access_token=" + Core.tokenId);
     }
 
+    public String getFriends (int id) {
+        return Get.get("https://api.vk.com/method/friends.get?user_id=" + id + "&v=5.37&access_token=" + Core.tokenId);
+    }
+
 }
