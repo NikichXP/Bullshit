@@ -94,7 +94,7 @@ public class OldGUI extends JFrame {
 //		if (c.getProperty("fullscreen") == "true") {
 		this.setExtendedState(Frame.MAXIMIZED_BOTH);
 //		} else {
-//			this.setSize (1080, 984);   //Это для случая оконного режима.
+//			this.setSize (800, 640);   //Это для случая оконного режима.
 //		}
 		l = new Locale ();
 		l.setLocale("ruRU");

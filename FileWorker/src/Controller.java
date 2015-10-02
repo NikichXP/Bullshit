@@ -7,8 +7,7 @@ public class Controller {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				NewUI frame = new NewUI();
-				frame.setTitle("New UI");
-				frame.setExtendedState(Frame.MAXIMIZED_BOTH); 
+				frame.setTitle("NFM v1.9");
 				frame.init();
 				frame.setVisible(true);
 			}
