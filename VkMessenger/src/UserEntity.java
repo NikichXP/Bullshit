@@ -5,7 +5,7 @@ public class UserEntity {
 
     public int[] friends;
     public final int id;
-    public boolean isInited;
+    public boolean isInited = false;
 
     public UserEntity (int id) {
         this.id = id;
