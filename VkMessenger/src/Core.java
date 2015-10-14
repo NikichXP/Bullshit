@@ -14,11 +14,16 @@ public class Core {
         try {
             tokenId = new String(Files.readAllBytes(Paths.get("D:/.vk")));
         } catch (Exception e) {
-            e.printStackTrace();
+            try {
+                tokenId = new String(Files.readAllBytes(Paths.get("/home/nikichxp/.vk")));
+            } catch (Exception ex) {
+                e.printStackTrace();
+                ex.printStackTrace();
+            }
         }
 
-//        UserEntity u = new UserEntity(userId);
-        System.out.println(UserAPI.getUserInfo(userId));
+        UserEntity u = new UserEntity(userId);
+//        System.out.println(UserAPI.getUserInfo(userId));
 
     }
 }
