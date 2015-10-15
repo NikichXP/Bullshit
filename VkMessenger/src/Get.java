@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -14,10 +15,15 @@ public class Get {
 
     private static String cleanGet(String url) {
         String ret = "";
+        URLConnection conn;
+        InputStream inStream = null;
         try {
             URL u1 = new URL(url);
-            URLConnection conn = u1.openConnection();
-            InputStream inStream = conn.getInputStream();
+            if (Core.DEBUG) {
+                System.out.println(url);
+            }
+            conn = u1.openConnection();
+            inStream = conn.getInputStream();
             InputStreamReader in = new InputStreamReader(inStream);
             char[] buf = new char[10];
             while (in.ready()) {
@@ -41,6 +47,14 @@ public class Get {
         } catch (Exception e) {
             e.printStackTrace();
             ret = "bad";
+        } finally {
+            if (inStream != null) {
+                try {
+                    inStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         return ret;
     }

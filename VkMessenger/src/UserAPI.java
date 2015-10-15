@@ -17,7 +17,7 @@ public class UserAPI {
         }
         request.append("&fields=sex,bdate,city,country,online_mobile,domain,has_mobile,contacts,connections,site," +
                 "can_post,can_see_all_posts,can_see_audio,can_write_private_message,status,last_seen,common_count," +
-                "relation,relatives,counters,screen_name,maiden_name");
+                "relation,counters,screen_name,maiden_name"); // can add "relatives," to string
 
         return Get.get(request.toString());
     }
