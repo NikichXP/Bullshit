@@ -30,12 +30,14 @@ public class UserEntity {
     public int commonCount;
     public String counters;
 
+    public AudioContainer audio;
+
     private String unparsedData;
 
     public UserEntity (int id) {
         this.id = id;
-        friends = UserAPI.getFriends(id);
-        unparsedData = UserAPI.getUserInfo(id);
+        friends = API.getFriends(id);
+        unparsedData = API.getUserInfo(id);
         System.out.println(unparsedData);
         if (unparsedData.length() < 20) { //random
             return;
@@ -176,6 +178,7 @@ public class UserEntity {
                     System.out.println("Unhandled value: " + arr[0]);
             }
         }
+        this.audio = new AudioContainer(id);
         isInited = true;
     }
 

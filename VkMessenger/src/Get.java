@@ -9,7 +9,7 @@ import java.net.URLConnection;
  */
 public class Get {
 
-    public static String get (String url) {
+    public static String get(String url) {
         return cleanGet("https://api.vk.com/method/" + url + "&v=5.37&access_token=" + Core.tokenId);
     }
 
@@ -19,28 +19,37 @@ public class Get {
         InputStream inStream = null;
         try {
             URL u1 = new URL(url);
-            if (Core.DEBUG) {
-                System.out.println(url);
-            }
             conn = u1.openConnection();
             inStream = conn.getInputStream();
             InputStreamReader in = new InputStreamReader(inStream);
-            char[] buf = new char[10];
-            while (in.ready()) {
+            char[] buf = new char[Core.BUF_SIZE];
+            String tmp1, tmp2 = null;
+            boolean flag = true;
+            while (true) {
                 in.read(buf);
-                String tmp = new String (buf);
-                ret += tmp;
+                tmp1 = new String(buf);
+                if (tmp1.equals(tmp2)) {
+                    break;
+                } else {
+                    ret += tmp1;
+                    tmp2 = tmp1;
+                }
             }
             if (ret.charAt(0) == '{') {
                 int lvl = 1;
                 for (int i = 1; i < ret.length(); i++) {
                     switch (ret.charAt(i)) {
-                        case '{': lvl++; break;
-                        case '}': lvl--; break;
-                        default: break;
+                        case '{':
+                            lvl++;
+                            break;
+                        case '}':
+                            lvl--;
+                            break;
+                        default:
+                            break;
                     }
                     if (lvl == 0) {
-                        ret = ret.substring(0, i+1);
+                        ret = ret.substring(0, i + 1);
                     }
                 }
             }

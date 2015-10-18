@@ -3,11 +3,7 @@ import java.util.regex.*;
 /**
  * UserDAO to use API
  */
-public class UserAPI {
-//
-//    public static String getUserInfo (int id) {
-//        return getUserInfo({id});
-//    }
+public class API {
 
     public static String getUserInfo (int... id) {
         StringBuilder request = new StringBuilder();
@@ -20,6 +16,10 @@ public class UserAPI {
                 "relation,counters,screen_name,maiden_name"); // can add "relatives," to string
 
         return Get.get(request.toString());
+    }
+
+    public static String getAudioList (int id) {
+        return Get.get("audio.get?ownerid="+id);
     }
 
     public static int[] getFriends (int id) {

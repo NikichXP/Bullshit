@@ -9,6 +9,7 @@ public class Core {
     public static String tokenId = null;
     public final static int userId = 9867491;
     public final static boolean DEBUG = true;
+    public final static int BUF_SIZE = 1024;
 
     public static void main (String [] args) {
         try {
