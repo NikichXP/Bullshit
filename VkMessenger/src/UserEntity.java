@@ -69,10 +69,8 @@ public class UserEntity {
             switch (unparsedData.charAt(i)) {
                 case ',':
                     if (lvl == 0) {
-                        {
-                            data[dots] = unparsedData.substring(index, i);
-                            index = i+1;
-                        }
+                        data[dots] = unparsedData.substring(index, i);
+                        index = i+1;
                         dots++;
                     }
                     break;

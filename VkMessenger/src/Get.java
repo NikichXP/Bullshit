@@ -10,7 +10,7 @@ import java.net.URLConnection;
 public class Get {
 
     public static String get(String url) {
-        return cleanGet("https://api.vk.com/method/" + url + "&v=5.37&access_token=" + Core.tokenId);
+        return cleanGet("https://api.vk.com/method/" + url + "&v=5.37&access_token=" + VkCore.tokenId);
     }
 
     private static String cleanGet(String url) {
@@ -22,7 +22,7 @@ public class Get {
             conn = u1.openConnection();
             inStream = conn.getInputStream();
             InputStreamReader in = new InputStreamReader(inStream);
-            char[] buf = new char[Core.BUF_SIZE];
+            char[] buf = new char[VkCore.BUF_SIZE];
             String tmp1, tmp2 = null;
             boolean flag = true;
             while (true) {
